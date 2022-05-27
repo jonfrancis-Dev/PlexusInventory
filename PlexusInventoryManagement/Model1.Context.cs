@@ -12,6 +12,8 @@ namespace PlexusInventoryManagement
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class PlexusIMSEntities : DbContext
     {
@@ -28,7 +30,10 @@ namespace PlexusInventoryManagement
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Staff> Staffs { get; set; }
-        public virtual DbSet<Supplier> Suppliers { get; set; }
+    
+        public virtual int Update_Insert()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Insert");
+        }
     }
 }

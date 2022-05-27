@@ -14,13 +14,7 @@ namespace PlexusInventoryManagement
     
     public partial class Order
     {
-        public int Id { get; set; }
-        public int OrderNumber { get; set; }
-        public string ProductId { get; set; }
-        public byte Quantity { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public string OrderStatus { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public string CustomerName { get; set; }
+        public string OrderID { get; set; }
+        public string OrderNo { get; set; }
     }
 }

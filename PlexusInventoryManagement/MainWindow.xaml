@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlexusInventoryManagement"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1100">
+        Title="MainWindow" Height="800" Width="1100" WindowStartupLocation="CenterScreen" Icon="/plexusims_icon_nfD_icon.ico" WindowStyle="ThreeDBorderWindow">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="240"/>
@@ -20,37 +20,42 @@
         <Grid Grid.Column="0" Margin="0,0,0,3" Grid.Row="1" Background="#9B9EAA" Width="240">
             <Label Content="Brand" HorizontalAlignment="Left" Margin="16,207,0,0" VerticalAlignment="Top" Width="54" Height="34" FontFamily="Segoe UI Semibold" FontSize="16"/>
             <TextBox x:Name="textboxBrand" HorizontalAlignment="Left" Margin="80,207,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="34"/>
-            <Label Content="Location" HorizontalAlignment="Left" Margin="3,358,0,0" VerticalAlignment="Top" Width="72" Height="36" FontFamily="Segoe UI Semibold" FontSize="16"/>
-            <TextBox x:Name="textboxLocation" HorizontalAlignment="Left" Margin="80,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="34"/>
+            <Label Content="Location" HorizontalAlignment="Left" Margin="5,352,0,0" VerticalAlignment="Top" Width="72" Height="36" FontFamily="Segoe UI Semibold" FontSize="16"/>
+            <TextBox x:Name="textboxLocation" HorizontalAlignment="Left" Margin="80,353,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="34"/>
             <Label Content="Model" HorizontalAlignment="Left" Margin="13,110,0,0" VerticalAlignment="Top" Width="58" Height="30" FontFamily="Segoe UI Semibold" FontSize="16"/>
             <TextBox x:Name="textboxModel" HorizontalAlignment="Left" Margin="80,108,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="34"/>
             <Label Content="Specs" HorizontalAlignment="Left" Margin="16,157,0,0" VerticalAlignment="Top" Width="54" Height="36" FontFamily="Segoe UI Semibold" FontSize="16"/>
             <TextBox x:Name="textboxSpecs" HorizontalAlignment="Left" Margin="80,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="34"/>
             <Label Content="Serial #" HorizontalAlignment="Left" Margin="15,59,0,0" VerticalAlignment="Top" Height="35" Width="62" FontFamily="Segoe UI Semibold" FontSize="16" RenderTransformOrigin="0.586,-0.104"/>
             <TextBox x:Name="textboxSerialNumber" HorizontalAlignment="Left" Margin="80,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="34"/>
-            <Button x:Name="addBtn" Content="ADD" HorizontalAlignment="Left" Margin="-1,456,0,0" VerticalAlignment="Top" Width="119" Click="addBtn_Click" Height="49" Background="#FF20500A" BorderBrush="White" Foreground="#FFFDFDFD" FontFamily="Segoe UI Semibold" FontSize="16"/>
-            <Button x:Name="deleteBtn" Content="DELETE" HorizontalAlignment="Left" Margin="118,456,0,0" VerticalAlignment="Top" Width="119" Height="49" Click="deleteBtn_Click" Background="#FF712525" BorderBrush="White" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16"/>
-            <Button x:Name="loadBtn" Content="REFRESH" HorizontalAlignment="Left" Margin="-1,515,0,0" VerticalAlignment="Top" Width="119" Height="49" Click="loadBtn_Click" Background="#FF050413" BorderBrush="Snow" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16"/>
-            <Button x:Name="updateBtn" Content="UPDATE" HorizontalAlignment="Left" Margin="118,515,0,0" VerticalAlignment="Top" Width="119" Height="49" Click="updateBtn_Click" Background="#FFFF77A9" Foreground="White" BorderBrush="White" FontFamily="Segoe UI Semibold" FontSize="16"/>
-            <Label Content="Received" HorizontalAlignment="Left" Margin="3,308,0,0" VerticalAlignment="Top" Height="37" Width="80" FontSize="16" FontFamily="Segoe UI Semibold"/>
-            <TextBox x:Name="textboxReceived" HorizontalAlignment="Left" Margin="80,309,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="35"/>
+            <Button x:Name="addBtn" Content="ADD" HorizontalAlignment="Left" Margin="1,559,0,0" VerticalAlignment="Top" Width="119" Click="addBtn_Click" Height="49" Background="#FF20500A" BorderBrush="White" Foreground="#FFFDFDFD" FontFamily="Segoe UI Semibold" FontSize="16"/>
+            <Button x:Name="deleteBtn" Content="DELETE" HorizontalAlignment="Left" Margin="120,559,0,0" VerticalAlignment="Top" Width="119" Height="49" Click="deleteBtn_Click" Background="#FF712525" BorderBrush="White" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16"/>
+            <Button x:Name="loadBtn" Content="REFRESH" HorizontalAlignment="Left" Margin="1,608,0,0" VerticalAlignment="Top" Width="119" Height="49" Click="loadBtn_Click" Background="#FF050413" BorderBrush="Snow" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16"/>
+            <Button x:Name="updateBtn" Content="UPDATE" HorizontalAlignment="Left" Margin="120,608,0,0" VerticalAlignment="Top" Width="119" Height="49" Click="updateBtn_Click" Background="#FFFF77A9" Foreground="White" BorderBrush="White" FontFamily="Segoe UI Semibold" FontSize="16"/>
+            <Label Content="QTY" HorizontalAlignment="Left" Margin="13,308,0,0" VerticalAlignment="Top" Height="37" Width="45" FontSize="16" FontFamily="Segoe UI Semibold"/>
+            <TextBox x:Name="textboxQty" HorizontalAlignment="Left" Margin="80,309,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="140" Height="35"/>
             <Label Content="Category" HorizontalAlignment="Left" Margin="3,257,0,0" VerticalAlignment="Top" Height="37" Width="77" FontFamily="Segoe UI Semibold" FontSize="16"/>
             <TextBox x:Name="textboxCategory" HorizontalAlignment="Left" Margin="80,258,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="35"/>
             <Label Content="EPC" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Height="35" Width="36" FontFamily="Segoe UI Semibold" FontSize="16"/>
             <TextBox x:Name="textboxEPC" HorizontalAlignment="Left" Margin="80,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="35"/>
-            <Label Content="UPC" HorizontalAlignment="Left" Margin="18,412,0,0" VerticalAlignment="Top" Width="48" Height="30" FontFamily="Segoe UI Semibold" FontSize="16"/>
-            <TextBox x:Name="textboxUPC" HorizontalAlignment="Left" Margin="80,409,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="36"/>
+            <Label Content="UPC" HorizontalAlignment="Left" Margin="14,400,0,0" VerticalAlignment="Top" Width="48" Height="30" FontFamily="Segoe UI Semibold" FontSize="16"/>
+            <TextBox x:Name="textboxUPC" HorizontalAlignment="Left" Margin="80,397,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="36"/>
+            <Label Content="Grade" HorizontalAlignment="Left" Margin="10,444,0,0" VerticalAlignment="Top" Width="56" Height="30" FontFamily="Segoe UI Semibold" FontSize="16"/>
+            <TextBox x:Name="textboxGrade" HorizontalAlignment="Left" Margin="80,444,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="36"/>
+            <Label Content="ID" HorizontalAlignment="Left" Margin="22,494,0,0" VerticalAlignment="Top" Width="28" Height="30" FontFamily="Segoe UI Semibold" FontSize="16"/>
+            <Button x:Name="clearBtn" Content="CLEAR" HorizontalAlignment="Left" Margin="150,499,0,0" VerticalAlignment="Top" Width="70" Height="25" Click="clearBtn_Click" Background="#FF0092D0" BorderBrush="White" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16"/>
+            <Button x:Name="testBtn" Content="TESTING" HorizontalAlignment="Left" Margin="150,529,0,0" VerticalAlignment="Top" Width="70" Height="25" Click="testBtn_Click" Background="#FFB1EA7A" BorderBrush="White" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16"/>
         </Grid>
-        <Grid Grid.Row="0" Grid.Column="0" Width="240" Height="95" Background="#222222">
-            <Label Content="PLEXUS IMS" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" FontFamily="Segoe UI Semibold" FontSize="24" FontWeight="Bold" Background="#FF222222" Width="144" Height="42" Foreground="White"/>
+        <Grid Grid.Row="0" Grid.Column="0" Width="240" Height="95" Background="#FF050413">
+            <Label Content="PLEXUS IMS" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" FontFamily="Segoe UI Semibold" FontSize="24" FontWeight="Bold" Background="#FF050413" Width="144" Height="42" Foreground="White"/>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="1" Background="#FFDFE4E6">
             <Label Content="PRODUCTS PAGE" HorizontalAlignment="Center" VerticalAlignment="Center" Width="292" FontFamily="Segoe UI Semibold" FontSize="36"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="1" Background="#222222">
-            <DataGrid x:Name="gridProducts" Margin="48,34,48,34" SelectionChanged="gridProducts_SelectionChanged" 
-                  AlternatingRowBackground="#FF87A5A5" SelectionUnit="FullRow"/>
+        <Grid Grid.Row="1" Grid.Column="1" Background="#FF050413">
+            <DataGrid x:Name="gridProducts" Margin="48,78,48,70" SelectionChanged="gridProducts_SelectionChanged" 
+                  AlternatingRowBackground="#FF5A619C" SelectionUnit="FullRow" BorderBrush="Snow" Background="#FF222222" />
         </Grid>
-
+        <TextBox Name="textboxSearch" HorizontalAlignment="Left" Margin="80,495,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="52" Height="36" Grid.Row="1"/>
     </Grid>
 </Window>
