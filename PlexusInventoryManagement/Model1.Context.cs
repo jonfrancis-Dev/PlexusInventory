@@ -35,5 +35,95 @@ namespace PlexusInventoryManagement
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Insert");
         }
+    
+        public virtual int Insert_Product(string brand, string ePC, string category, string location, string model, string specs, Nullable<int> quantity, string uPC, string serialNumber, string grade)
+        {
+            var brandParameter = brand != null ?
+                new ObjectParameter("Brand", brand) :
+                new ObjectParameter("Brand", typeof(string));
+    
+            var ePCParameter = ePC != null ?
+                new ObjectParameter("EPC", ePC) :
+                new ObjectParameter("EPC", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("Location", location) :
+                new ObjectParameter("Location", typeof(string));
+    
+            var modelParameter = model != null ?
+                new ObjectParameter("Model", model) :
+                new ObjectParameter("Model", typeof(string));
+    
+            var specsParameter = specs != null ?
+                new ObjectParameter("Specs", specs) :
+                new ObjectParameter("Specs", typeof(string));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(int));
+    
+            var uPCParameter = uPC != null ?
+                new ObjectParameter("UPC", uPC) :
+                new ObjectParameter("UPC", typeof(string));
+    
+            var serialNumberParameter = serialNumber != null ?
+                new ObjectParameter("SerialNumber", serialNumber) :
+                new ObjectParameter("SerialNumber", typeof(string));
+    
+            var gradeParameter = grade != null ?
+                new ObjectParameter("Grade", grade) :
+                new ObjectParameter("Grade", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_Product", brandParameter, ePCParameter, categoryParameter, locationParameter, modelParameter, specsParameter, quantityParameter, uPCParameter, serialNumberParameter, gradeParameter);
+        }
+    
+        public virtual int Update_Product(string brand, string ePC, string category, string location, string model, string specs, Nullable<int> quantity, string uPC, string serialNumber, string grade)
+        {
+            var brandParameter = brand != null ?
+                new ObjectParameter("Brand", brand) :
+                new ObjectParameter("Brand", typeof(string));
+    
+            var ePCParameter = ePC != null ?
+                new ObjectParameter("EPC", ePC) :
+                new ObjectParameter("EPC", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("Location", location) :
+                new ObjectParameter("Location", typeof(string));
+    
+            var modelParameter = model != null ?
+                new ObjectParameter("Model", model) :
+                new ObjectParameter("Model", typeof(string));
+    
+            var specsParameter = specs != null ?
+                new ObjectParameter("Specs", specs) :
+                new ObjectParameter("Specs", typeof(string));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(int));
+    
+            var uPCParameter = uPC != null ?
+                new ObjectParameter("UPC", uPC) :
+                new ObjectParameter("UPC", typeof(string));
+    
+            var serialNumberParameter = serialNumber != null ?
+                new ObjectParameter("SerialNumber", serialNumber) :
+                new ObjectParameter("SerialNumber", typeof(string));
+    
+            var gradeParameter = grade != null ?
+                new ObjectParameter("Grade", grade) :
+                new ObjectParameter("Grade", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Product", brandParameter, ePCParameter, categoryParameter, locationParameter, modelParameter, specsParameter, quantityParameter, uPCParameter, serialNumberParameter, gradeParameter);
+        }
     }
 }

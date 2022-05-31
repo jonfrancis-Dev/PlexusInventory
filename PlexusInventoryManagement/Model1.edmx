@@ -39,7 +39,30 @@
           <Property Name="SerialNumber" Type="varchar" MaxLength="50" />
           <Property Name="Grade" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Function Name="Update_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Insert_Product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Brand" Type="varchar" Mode="In" />
+          <Parameter Name="EPC" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="Location" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="Specs" Type="varchar" Mode="In" />
+          <Parameter Name="Quantity" Type="int" Mode="In" />
+          <Parameter Name="UPC" Type="varchar" Mode="In" />
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Grade" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Brand" Type="varchar" Mode="In" />
+          <Parameter Name="EPC" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="Location" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="Specs" Type="varchar" Mode="In" />
+          <Parameter Name="Quantity" Type="int" Mode="In" />
+          <Parameter Name="UPC" Type="varchar" Mode="In" />
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Grade" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="PlexusIMSModelStoreContainer">
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
@@ -54,6 +77,30 @@
           <EntitySet Name="Customers" EntityType="PlexusIMSModel.Customer" />
           <EntitySet Name="Orders" EntityType="PlexusIMSModel.Order" />
           <EntitySet Name="Products" EntityType="PlexusIMSModel.Product" />
+          <FunctionImport Name="Insert_Product">
+            <Parameter Name="Brand" Mode="In" Type="String" />
+            <Parameter Name="EPC" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="Specs" Mode="In" Type="String" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="UPC" Mode="In" Type="String" />
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Grade" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Product">
+            <Parameter Name="Brand" Mode="In" Type="String" />
+            <Parameter Name="EPC" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="Specs" Mode="In" Type="String" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="UPC" Mode="In" Type="String" />
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Grade" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -95,7 +142,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PlexusIMSModelStoreContainer" CdmEntityContainer="PlexusIMSEntities">
-          <FunctionImportMapping FunctionImportName="Update_Insert" FunctionName="PlexusIMSModel.Store.Update_Insert" />
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="PlexusIMSModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
@@ -133,6 +179,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Insert_Product" FunctionName="PlexusIMSModel.Store.Insert_Product" />
+          <FunctionImportMapping FunctionImportName="Update_Product" FunctionName="PlexusIMSModel.Store.Update_Product" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
