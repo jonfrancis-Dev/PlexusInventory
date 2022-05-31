@@ -13,11 +13,11 @@ namespace PlexusInventoryManagement
     /// </summary>
     public partial class MainWindow : Window
     {
+        PlexusIMSEntities db = new PlexusIMSEntities();
         public MainWindow()
         {
             InitializeComponent();
 
-            PlexusIMSEntities db = new PlexusIMSEntities();
             //Selecting all items in Products
             var products = from p in db.Products
                            select p;
@@ -33,7 +33,6 @@ namespace PlexusInventoryManagement
         //Add Data using Textboxes, Save, then Refresh!!!
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {            
-            PlexusIMSEntities db = new PlexusIMSEntities();
             //Creating a new object and adding the textbox fields to Database
                 Product productObject = new Product()
                 {
@@ -57,8 +56,6 @@ namespace PlexusInventoryManagement
         //Refresh Dataset after Change
         private void loadBtn_Click(object sender, RoutedEventArgs e)
         {
-            PlexusIMSEntities db = new PlexusIMSEntities();
-
             this.gridProducts.ItemsSource = db.Products.ToList();
         }
 
@@ -159,10 +156,26 @@ namespace PlexusInventoryManagement
         //Still Testing Qty
         private void testBtn_Click(object sender, RoutedEventArgs e)
         {
-         /*
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-MCOMTN9;Initial Catalog=PlexusIMS;User ID=sa;Password=PlTe$#2018");
+           /* SqlConnection con = new SqlConnection("Data Source=DESKTOP-MCOMTN9;Initial Catalog=PlexusIMS;User ID=sa;Password=PlTe$#2018");
             SqlDataAdapter da = new SqlDataAdapter("Update_Insert", con);
+         
             con.Open();
+
+            Product productObject = new Product()
+                {
+                    //TextBox = Column Name
+                    Brand = textboxBrand.Text,
+                    Location = textboxLocation.Text,
+                    Model = textboxModel.Text,
+                    Specs = textboxSpecs.Text,
+                    Quantity = Convert.ToInt32(this.textboxQty.Text),
+                    SerialNumber = textboxSerialNumber.Text,
+                    EPC = textboxEPC.Text,
+                    Category = textboxCategory.Text,
+                    Grade = textboxGrade.Text,
+                    UPC = textboxUPC.Text
+                };
+            db.Products.Add(productObject);//Add the textbox info to database
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
             da.SelectCommand.Parameters.Add("@Brand",SqlDbType.VarChar,(100)).Value = textboxBrand.Text;
             da.SelectCommand.Parameters.Add("@EPC", SqlDbType.VarChar, (100)).Value = textboxEPC.Text;
@@ -175,9 +188,9 @@ namespace PlexusInventoryManagement
             da.SelectCommand.Parameters.Add("@Grade", SqlDbType.VarChar, (50)).Value = textboxGrade.Text;
             da.SelectCommand.Parameters.Add("@SerialNumber", SqlDbType.VarChar, (50)).Value = textboxSerialNumber.Text;
             da.SelectCommand.ExecuteNonQuery();
+            db.SaveChanges();*/
             MessageBox.Show("Saved Successfully");
-            con.Close();     
-         */
+            /*con.Close();*/
         }
     }
 }
