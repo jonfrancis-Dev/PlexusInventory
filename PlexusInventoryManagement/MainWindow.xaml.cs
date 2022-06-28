@@ -2,9 +2,11 @@
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Controls;
 using System.Data;
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 namespace PlexusInventoryManagement
 {
@@ -21,6 +23,7 @@ namespace PlexusInventoryManagement
             //Selecting all items in Products
             var products = from p in db.Products
                            select p;
+            
 
             foreach (var product in products)
             {
@@ -83,6 +86,7 @@ namespace PlexusInventoryManagement
                             this.textboxUPC.Text = p.UPC;
                             this.textboxGrade.Text = p.Grade;
                             this.textboxSearch.Text = p.productsID.ToString();//Convert to String
+
                         }
                     }
                 }
@@ -98,14 +102,19 @@ namespace PlexusInventoryManagement
         // UPDATE/EDIT THE DATABASE with the RowCell selected!!!        
        private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
+            PlexusIMSEntities db = new PlexusIMSEntities();
             int i = Convert.ToInt32(textboxQty.Text);//Convert QTY to Text for textbox to column
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-MCOMTN9;Initial Catalog=PlexusIMS;User ID=sa;Password=PlTe$#2018");
             con.Open();
             //Update product with Textboxes filled
-            SqlCommand cmd = new SqlCommand("UPDATE Product SET Brand='" + textboxBrand.Text + "', EPC='"+textboxEPC.Text+"', Category='"+textboxCategory.Text+ "', Location='"+textboxLocation.Text+ "', Model='"+textboxModel.Text+ "',Specs='"+textboxSpecs.Text+ "', UPC='"+textboxUPC.Text+ "', Quantity='" + textboxQty.Text + "', SerialNumber='" + textboxSerialNumber.Text+ "',Grade='"+textboxGrade.Text+"' WHERE productsID ='"+textboxSearch.Text+"' ", con);
+            SqlCommand cmd = new SqlCommand("UPDATE Product SET Brand='" + textboxBrand.Text + "', EPC='"+textboxEPC.Text+"', Category='"+textboxCategory.Text+ "', " +
+                "Location='"+textboxLocation.Text+ "', Model='"+textboxModel.Text+ "',Specs='"+textboxSpecs.Text+ "', UPC='"+textboxUPC.Text+ "', Quantity='" + textboxQty.Text + "', SerialNumber='" + textboxSerialNumber.Text+ "'," +
+                "Grade='"+textboxGrade.Text+"' WHERE productsID ='"+textboxSearchBar.Text+"' ", con);
             try
             {
                 cmd.ExecuteNonQuery();
+                db.SaveChanges();
+                this.gridProducts.ItemsSource = db.Products.ToList();
                 MessageBox.Show("Record has Been Updated");
             }
             catch (SqlException ex)
@@ -151,46 +160,62 @@ namespace PlexusInventoryManagement
             textboxSearch.Clear();
         }
 
-
-
-        //Still Testing Qty
-        private void testBtn_Click(object sender, RoutedEventArgs e)
+        private void textboxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-           /* SqlConnection con = new SqlConnection("Data Source=DESKTOP-MCOMTN9;Initial Catalog=PlexusIMS;User ID=sa;Password=PlTe$#2018");
-            SqlDataAdapter da = new SqlDataAdapter("Update_Insert", con);
-         
-            con.Open();
-
-            Product productObject = new Product()
+            using (PlexusIMSEntities db = new PlexusIMSEntities())
+            {
+                ObservableCollection<Product> products = new ObservableCollection<Product>();
+                ListCollectionView collectionView = new ListCollectionView(products);
+                if (String.IsNullOrWhiteSpace(textboxSearchBar.Text))
                 {
-                    //TextBox = Column Name
-                    Brand = textboxBrand.Text,
-                    Location = textboxLocation.Text,
-                    Model = textboxModel.Text,
-                    Specs = textboxSpecs.Text,
-                    Quantity = Convert.ToInt32(this.textboxQty.Text),
-                    SerialNumber = textboxSerialNumber.Text,
-                    EPC = textboxEPC.Text,
-                    Category = textboxCategory.Text,
-                    Grade = textboxGrade.Text,
-                    UPC = textboxUPC.Text
-                };
-            db.Products.Add(productObject);//Add the textbox info to database
-            da.SelectCommand.CommandType = CommandType.StoredProcedure;
-            da.SelectCommand.Parameters.Add("@Brand",SqlDbType.VarChar,(100)).Value = textboxBrand.Text;
-            da.SelectCommand.Parameters.Add("@EPC", SqlDbType.VarChar, (100)).Value = textboxEPC.Text;
-            da.SelectCommand.Parameters.Add("@Category", SqlDbType.VarChar, (100)).Value = textboxCategory.Text;
-            da.SelectCommand.Parameters.Add("@Location", SqlDbType.VarChar, (100)).Value = textboxLocation.Text;
-            da.SelectCommand.Parameters.Add("@Model", SqlDbType.VarChar, (100)).Value = textboxModel.Text;
-            da.SelectCommand.Parameters.Add("@Specs", SqlDbType.VarChar, (250)).Value = textboxSpecs.Text;
-            da.SelectCommand.Parameters.Add("@Quantity", SqlDbType.Int).Value = textboxQty.Text;
-            da.SelectCommand.Parameters.Add("@UPC", SqlDbType.VarChar, (50)).Value = textboxBrand.Text;
-            da.SelectCommand.Parameters.Add("@Grade", SqlDbType.VarChar, (50)).Value = textboxGrade.Text;
-            da.SelectCommand.Parameters.Add("@SerialNumber", SqlDbType.VarChar, (50)).Value = textboxSerialNumber.Text;
-            da.SelectCommand.ExecuteNonQuery();
-            db.SaveChanges();*/
-            MessageBox.Show("Saved Successfully");
-            /*con.Close();*/
+                
+                }
+
+                else
+                {
+                    foreach (Product product in db.Products)
+                    {
+                        if (textboxSearchBar.Text != "")
+                        {
+                            
+                            if (product.Model.Contains(textboxSearchBar.Text))
+                            {
+                                products.Add(product);
+                            }
+                            if (product.Brand.Contains(textboxSearchBar.Text))
+                            {
+                                products.Add(product);
+                            }
+                            /* if (product.UPC.Contains(textboxSearchBar.Text))
+                             {
+                                 products.Add(product);
+                             }*/
+
+                            if (product.Category.Contains(textboxSearchBar.Text))
+                            {
+                                products.Add(product);
+                            }
+                            if (product.Grade.Contains(textboxSearchBar.Text))
+                            {
+                                products.Add(product);
+                            }
+                            if (product.EPC.Contains(textboxSearchBar.Text))
+                            {
+                                products.Add(product);
+                            }
+                            if (product.SerialNumber.Contains(textboxSearchBar.Text))
+                            {
+                                products.Add(product);
+                            }
+                            if (product.Location.Contains(textboxSearchBar.Text))
+                            {
+                                products.Add(product);
+                            }
+                        }
+                        gridProducts.ItemsSource = products.ToList();
+                    }
+                }
+            }                 
         }
     }
 }
