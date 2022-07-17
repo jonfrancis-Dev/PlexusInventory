@@ -9,5 +9,5 @@ Future:
 -Low quantity sends alert for purchase
 -Pull orders from ebay to adjust quantity of stock.
 -Login Page using Microsoft 365 directory
--QA Script to check Device Health/Grade
+-QA Script to check Device Health/Grade and automate uploading stock
 -Client specific inventory tracking
